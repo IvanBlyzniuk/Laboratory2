@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Laboratory2.Views.DateOfBirthInfoView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Background="White"
+        Height="370"
+        
+            >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column = "0" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Height="Auto" Text="Your first name:"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column = "1" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Center" Height="Auto" Text="{Binding FirstName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+
+        <TextBlock Grid.Row="1" Grid.Column = "0" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Height="Auto" Text="Your last name:"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column = "1" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Center" Height="Auto" Text="{Binding LastName, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+
+        <TextBlock Grid.Row="2" Grid.Column = "0" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Height="Auto" Text="Your email:"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column = "1" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Center" Height="Auto" Text="{Binding Email, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+
+        <TextBlock Grid.Row="3" Grid.Column = "0" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Height="Auto" Text="Your date of birth:"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column = "1" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Center" Height="Auto" Text="{Binding DateOfBirth, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+
+        <TextBlock Grid.Row="4" Grid.Column = "0" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Height="Auto" Text="Are you an adult?:"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column = "1" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Center" Height="Auto" Text="{Binding IsAdult, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+
+        <TextBlock Grid.Row="5" Grid.Column = "0" Margin ="0" VerticalAlignment ="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Height="Auto" Text="Your sun sign:"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column = "1" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Center" Height="Auto" Text="{Binding SunSign, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+
+        <TextBlock Grid.Row="6" Grid.Column = "0" Margin ="0" VerticalAlignment ="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Height="Auto" Text="Your chinese zodiac sign:"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column = "1" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Center" Height="Auto" Text="{Binding ChineseSign, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+
+        <TextBlock Grid.Row="7" Grid.Column = "0" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Stretch" TextAlignment="Center" Height="Auto" Text="Is your birthday today?:"></TextBlock>
+        <TextBlock Grid.Row="7" Grid.Column = "1" Margin ="5" VerticalAlignment ="Center" HorizontalAlignment="Center" Height="Auto" Text="{Binding IsBirthday, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></TextBlock>
+
+        <Button Grid.Row="8" Grid.Column = "0" Margin="5" Name="AcceptButton" Content="Back" Grid.ColumnSpan="2" Command="{Binding BackCommand}"></Button>
+    </Grid>
+</UserControl>
