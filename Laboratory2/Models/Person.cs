@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Laboratory2.Exceptions;
+using System;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Laboratory2.Models
@@ -53,6 +55,12 @@ namespace Laboratory2.Models
 
         public Person(string firstName, string lastName, string? email, DateTime dateOfBirth)
         {
+            if (email != null && !EmailIsValid(email))
+                throw new InvalidEmailException("Email is invalid");
+            if (Age(dateOfBirth) >= 135)
+                throw new TooOldExcpetion("Your age is >= 135");
+            if (Age(dateOfBirth) < 0)
+                throw new NegativeAgeException("Your age is negative");
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -74,6 +82,24 @@ namespace Laboratory2.Models
             if (DateTime.Today.Month > dateOfBith.Month || (DateTime.Today.Month == dateOfBith.Month && DateTime.Today.Day >= dateOfBith.Day))
                 return DateTime.Today.Year - dateOfBith.Year;
             return DateTime.Today.Year - dateOfBith.Year - 1;
+        }
+
+        public async void CalculateFields()
+        {
+            var task1 = Task.Run(() => CalcIsAdult());
+            var task2 = Task.Run(() => CalcSunSign());
+            var task3 = Task.Run(() => CalcChineseSign());
+            var task4 = Task.Run(() => CalcIsBirthDay());
+            await task1;
+            await task2;
+            await task3;
+            await task4;
+        }
+
+        private bool EmailIsValid(string email)
+        {
+            Regex regex = new Regex(@"\w+@\w+\.\w+");
+            return regex.IsMatch(email);
         }
 
         private void CalcIsAdult()
@@ -131,18 +157,6 @@ namespace Laboratory2.Models
         private void CalcIsBirthDay()
         {
             isBirthday = DateOfBirth.Month == DateTime.Today.Month && DateOfBirth.Day == DateTime.Today.Day;
-        }
-
-        public async void CalculateFields()
-        {
-            var task1 = Task.Run(() => CalcIsAdult());
-            var task2 = Task.Run(() => CalcSunSign());
-            var task3 = Task.Run(() => CalcChineseSign());
-            var task4 = Task.Run(() => CalcIsBirthDay());
-            await task1;
-            await task2;
-            await task3;
-            await task4;
         }
     }
 }
