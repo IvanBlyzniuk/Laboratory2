@@ -84,7 +84,7 @@ namespace Laboratory2.Models
             return DateTime.Today.Year - dateOfBith.Year - 1;
         }
 
-        public async void CalculateFields()
+        public async Task CalculateFields()
         {
             var task1 = Task.Run(() => CalcIsAdult());
             var task2 = Task.Run(() => CalcSunSign());

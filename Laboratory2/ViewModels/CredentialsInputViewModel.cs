@@ -39,7 +39,7 @@ namespace Laboratory2.ViewModels
         {
             get
             {
-                return acceptCommand ??= new RelayCommand<object>(o => GoToDateOfBirthInfo(), CanExecute);//Accept()
+                return acceptCommand ??= new RelayCommand<object>(o => GoToDateOfBirthInfo(), CanExecute);
             }
         }
 
@@ -61,7 +61,7 @@ namespace Laboratory2.ViewModels
             _goToDateOfBirthInfo = goToDateOfBirthInfo;
         }
 
-        public void GoToDateOfBirthInfo()
+        public async Task GoToDateOfBirthInfo()
         {
             Person person;
             try
@@ -83,11 +83,9 @@ namespace Laboratory2.ViewModels
                 MessageBox.Show(ex.Message);
                 return;
             }
-            person.CalculateFields();
+            await person.CalculateFields();
             PersonRelayAgent.ThePerson = person;
             _goToDateOfBirthInfo.Invoke();
         }
-
-
     }
 }
